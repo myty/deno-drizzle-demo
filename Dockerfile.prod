@@ -5,9 +5,12 @@ FROM node:lts-slim
 COPY --from=deno /deno /usr/local/bin/deno
 
 WORKDIR /app
-COPY . .
+USER deno
 
-RUN npm install
+COPY deps.ts .
+RUN deno cache deps.ts
+
+COPY . .
 RUN deno cache src/index.ts
 
 EXPOSE 8787

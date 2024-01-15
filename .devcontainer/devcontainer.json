@@ -9,5 +9,5 @@
             ]
         }
     },
-    "initializeCommand": "npm install && deno cache src/index.ts"
+    "initializeCommand": "npm install && deno cache deps.ts && deno cache src/index.ts"
 }

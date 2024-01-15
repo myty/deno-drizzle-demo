@@ -1,7 +1,7 @@
-import Denomander from "https://deno.land/x/denomander@0.9.3/mod.ts";
+import { Denomander } from "../deps.ts";
 import { seedDatabase } from "./commands/seed.ts";
 import { migrateDatabase } from "./commands/migrate.ts";
-import { runWebApplication } from "./commands/web.ts";
+import { runWebApi } from "./commands/api.ts";
 
 const program = new Denomander({
   app_name: "DenoDrizzleDemo",
@@ -10,7 +10,7 @@ const program = new Denomander({
 });
 
 program
-  .command("run", "Run application").action(runWebApplication)
+  .command("api", "Run web api").action(runWebApi)
   .command("seed", "Seed database").action(seedDatabase)
   .command("migrate", "run migrations").action(migrateDatabase)
   .parse(Deno.args);

@@ -1,6 +1,6 @@
 import type { Column } from "drizzle-orm";
-import { pet, user } from "../db/schema.ts";
 import { sql } from "drizzle-orm";
+import { pet, user } from "../db/schema.ts";
 import { client, db } from "../db/db.ts";
 
 function count(col: Column) {

@@ -1,12 +1,7 @@
-import { pet, user } from "../db/schema.ts";
 import { eq, sql } from "drizzle-orm";
-import { Context, Hono } from "https://deno.land/x/hono@v3.12.4/mod.ts";
-import {
-  endTime,
-  startTime,
-  timing,
-} from "https://deno.land/x/hono@v3.12.4/middleware.ts";
+import { pet, user } from "../db/schema.ts";
 import { db } from "../db/db.ts";
+import { Context, endTime, Hono, startTime, timing } from "../../deps.ts";
 
 type User = typeof user.$inferSelect;
 type Pet = typeof pet.$inferSelect;
@@ -19,7 +14,7 @@ const getUserById = db.select().from(user)
   .innerJoin(pet, eq(user.id, pet.ownerId))
   .where(eq(user.id, sql.placeholder("userId"))).prepare("user");
 
-export function runWebApplication() {
+export function runWebApi() {
   const app = new Hono();
   app.use("*", timing());
 
