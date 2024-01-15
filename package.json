@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "drizzle-kit": "^0.20.12"
+  }
+}

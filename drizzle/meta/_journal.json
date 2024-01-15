@@ -1,0 +1,48 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1705289311283,
+      "tag": "0000_past_unus",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1705334189911,
+      "tag": "0001_peaceful_tana_nile",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1705334848817,
+      "tag": "0002_organic_juggernaut",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1705336533750,
+      "tag": "0003_omniscient_warlock",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1705336770308,
+      "tag": "0004_same_beast",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1705341541953,
+      "tag": "0005_puzzling_madame_web",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,5 +1,13 @@
 {
     "dockerComposeFile": "docker-compose.yml",
     "service": "devcontainer",
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "justjavac.vscode-deno-extensionpack"
+            ]
+        }
+    },
+    "initializeCommand": "npm install && deno cache --unstable --reload src/index.ts"
 }

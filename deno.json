@@ -1,0 +1,17 @@
+{
+  "tasks": {
+    "dev": "deno run --watch -A ./src/index.ts -- run",
+    "serve": "deno run -A ./src/index.ts -- run",
+    "migrate": "deno run -A ./src/index.ts -- migrate",
+    "seed": "deno run -A ./src/index.ts -- seed",
+    "generate": "npx drizzle-kit generate:pg",
+    "check": "npx drizzle-kit check:pg"
+  },
+  "imports": {
+    "drizzle-orm": "npm:drizzle-orm@^0.29.3",
+    "drizzle-orm/pg-core": "npm:drizzle-orm@^0.29.3/pg-core",
+    "drizzle-orm/postgres-js": "npm:drizzle-orm@^0.29.3/postgres-js",
+    "drizzle-orm/postgres-js/migrator": "npm:drizzle-orm@^0.29.3/postgres-js/migrator",
+    "postgres": "npm:postgres@^3.4.3"
+  }
+}
