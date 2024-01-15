@@ -9,5 +9,5 @@
             ]
         }
     },
-    "initializeCommand": "npm install && deno cache --unstable --reload src/index.ts"
+    "initializeCommand": "npm install && deno cache src/index.ts"
 }
