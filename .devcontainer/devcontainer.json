@@ -1,4 +1,5 @@
 {
+    "name": "Deno+Drizzle Demo",
     "dockerComposeFile": "docker-compose.yml",
     "service": "devcontainer",
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
