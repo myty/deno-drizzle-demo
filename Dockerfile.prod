@@ -5,7 +5,6 @@ FROM node:lts-slim
 COPY --from=deno /deno /usr/local/bin/deno
 
 WORKDIR /app
-USER deno
 
 COPY deps.ts .
 RUN deno cache deps.ts
@@ -14,4 +13,4 @@ COPY . .
 RUN deno cache src/index.ts
 
 EXPOSE 8787
-CMD ["deno", "run", "-A", "./src/index.ts", "--", "run"]
+CMD ["deno", "run", "-A", "./src/index.ts", "--", "api"]
