@@ -14,15 +14,11 @@ There are 2 different ways to get up and running. Devcontainers is the preferred
 ### With Devcontainers
 
 1. Open the project from devcontainer capable IDE such as VSCode.
-2. Run `deno task migrate` to run the migrations. This will create the database and tables needed for the demo.
-3. Run `deno task seed` to seed the database.
-4. Run `deno task serve` to start the server.
+2. Run `deno task serve` to start the server.
 
 ### Without Devcontainers
 
 1. Run `npm install` to install the dev dependencies. This is needed to run `drizzle-kit` for generating the migrations.
    Once Deno is able to run `drizzle-kit` this step will no longer be needed.
-2. Run `deno cache src.index.ts` to cache the dependencies.
-3. Run `deno task migrate` to run the migrations. This will create the database and tables needed for the demo.
-4. Run `deno task seed` to seed the database.
-5. Run `deno task serve` to start the server.
+2. Run `deno task initialize` to install dependencies; database, migrate, and seed the database.
+3. Run `deno task serve` to start the server.
