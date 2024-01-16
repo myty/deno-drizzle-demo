@@ -5,7 +5,8 @@
     "migrate": "deno run -A ./src/index.ts -- migrate",
     "seed": "deno run -A ./src/index.ts -- seed",
     "generate": "npx drizzle-kit generate:pg",
-    "check": "npx drizzle-kit check:pg"
+    "check": "npx drizzle-kit check:pg",
+    "initialize": "npm install && deno cache deps.ts && deno cache src/index.ts && deno task migrate && deno task seed"
   },
   "imports": {
     "drizzle-orm": "npm:drizzle-orm@^0.29.3",

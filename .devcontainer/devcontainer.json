@@ -10,5 +10,5 @@
             ]
         }
     },
-    "initializeCommand": "npm install && deno cache deps.ts && deno cache src/index.ts"
+    "postStartCommand": "deno task initialize"
 }
