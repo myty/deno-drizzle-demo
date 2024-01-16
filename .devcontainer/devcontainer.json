@@ -6,7 +6,8 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "justjavac.vscode-deno-extensionpack"
+                "justjavac.vscode-deno-extensionpack",
+                "bruno-api-client.bruno"
             ]
         }
     },
