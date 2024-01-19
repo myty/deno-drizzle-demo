@@ -6,7 +6,8 @@
     "seed": "deno run -A ./src/index.ts -- seed",
     "generate": "npx drizzle-kit generate:pg",
     "check": "npx drizzle-kit check:pg",
-    "initialize": "npm install && deno cache src/index.ts && deno task migrate && deno task seed"
+    "initialize": "npm install && deno cache src/index.ts && deno task migrate && deno task seed",
+    "update": "deno run --allow-read=./ --allow-net --allow-write=./ https://deno.land/x/deno_outdated@0.2.5/cli.ts && deno cache --reload src/index.ts"
   },
   "imports": {
     "drizzle-orm": "npm:drizzle-orm@^0.29.3",
