@@ -6,13 +6,10 @@
     "seed": "deno run -A ./src/index.ts -- seed",
     "generate": "npx drizzle-kit generate:pg",
     "check": "npx drizzle-kit check:pg",
-    "initialize": "npm install && deno cache deps.ts && deno cache src/index.ts && deno task migrate && deno task seed"
+    "initialize": "npm install && deno cache src/index.ts && deno task migrate && deno task seed"
   },
   "imports": {
     "drizzle-orm": "npm:drizzle-orm@^0.29.3",
-    "drizzle-orm/pg-core": "npm:drizzle-orm@^0.29.3/pg-core",
-    "drizzle-orm/postgres-js": "npm:drizzle-orm@^0.29.3/postgres-js",
-    "drizzle-orm/postgres-js/migrator": "npm:drizzle-orm@^0.29.3/postgres-js/migrator",
     "postgres": "npm:postgres@^3.4.3"
   }
 }

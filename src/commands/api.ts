@@ -33,7 +33,7 @@ export function runWebApi() {
     );
 
     if (!foundUser) {
-      return c.text("User not found", 404);
+      return c.text("User not found.", 404);
     }
 
     return c.json(foundUser);
