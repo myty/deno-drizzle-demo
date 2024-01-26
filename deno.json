@@ -11,6 +11,9 @@
   },
   "imports": {
     "drizzle-orm": "npm:drizzle-orm@^0.29.3",
+    "drizzle-orm/pg-core": "npm:drizzle-orm@^0.29.3/pg-core",
+    "drizzle-orm/postgres-js": "npm:drizzle-orm@^0.29.3/postgres-js",
+    "drizzle-orm/postgres-js/migrator": "npm:drizzle-orm@^0.29.3/postgres-js/migrator",
     "postgres": "npm:postgres@^3.4.3"
   }
 }
