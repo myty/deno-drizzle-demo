@@ -1,11 +1,7 @@
 import { eq, sql } from "drizzle-orm";
-import { pet, user } from "../db/schema.ts";
+import { Pet, pet, User, user, UserWithPets } from "../db/schema.ts";
 import { db } from "../db/db.ts";
 import { Context, endTime, Hono, startTime, timing } from "../../deps.ts";
-
-type User = typeof user.$inferSelect;
-type Pet = typeof pet.$inferSelect;
-type UserWithPets = User & { pets: Pet[] };
 
 const getAllUsers = db.select().from(user)
   .innerJoin(pet, eq(user.id, pet.ownerId)).prepare("all_users");

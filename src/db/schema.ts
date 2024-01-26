@@ -12,3 +12,7 @@ export const pet = pgTable("pets", {
   name: text("name").notNull(),
   ownerId: integer("owner_id").notNull().references(() => user.id),
 });
+
+export type User = typeof user.$inferSelect;
+export type Pet = typeof pet.$inferSelect;
+export type UserWithPets = User & { pets: Pet[] };
