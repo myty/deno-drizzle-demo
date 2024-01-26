@@ -8,12 +8,5 @@
     "check": "npx drizzle-kit check:pg",
     "initialize": "npm install && deno cache src/index.ts && deno task migrate && deno task seed",
     "update": "deno run --allow-read=./ --allow-net --allow-write=./ https://deno.land/x/deno_outdated@0.2.5/cli.ts && deno cache --reload src/index.ts"
-  },
-  "imports": {
-    "drizzle-orm": "npm:drizzle-orm@^0.29.3",
-    "drizzle-orm/pg-core": "npm:drizzle-orm@^0.29.3/pg-core",
-    "drizzle-orm/postgres-js": "npm:drizzle-orm@^0.29.3/postgres-js",
-    "drizzle-orm/postgres-js/migrator": "npm:drizzle-orm@^0.29.3/postgres-js/migrator",
-    "postgres": "npm:postgres@^3.4.3"
   }
 }

@@ -1,32 +1,35 @@
-import { eq, sql } from "drizzle-orm";
-import { Pet, pet, User, user, UserWithPets } from "../db/schema.ts";
+import { sql } from "drizzle-orm";
 import { db } from "../db/db.ts";
-import { Context, endTime, Hono, startTime, timing } from "../../deps.ts";
+import { endTime, Hono, startTime, timing } from "../../deps.ts";
 
-const getAllUsers = db.select().from(user)
-  .innerJoin(pet, eq(user.id, pet.ownerId)).prepare("all_users");
+const getAllUsers = db.query.users
+  .findMany({
+    with: { pets: true },
+  })
+  .prepare("all_users");
 
-const getUserById = db.select().from(user)
-  .innerJoin(pet, eq(user.id, pet.ownerId))
-  .where(eq(user.id, sql.placeholder("userId"))).prepare("user");
+const getUserById = db.query.users.findFirst({
+  with: { pets: true },
+  where: ((users, { eq }) => eq(users.id, sql.placeholder("userId"))),
+}).prepare("user");
 
 export function runWebApi() {
   const app = new Hono();
   app.use("*", timing());
 
   app.get("/users", async (c) => {
-    const users = await joinUsersAndPets(c, () => getAllUsers.execute());
+    startTime(c, "data");
+    const usersWithPets = await getAllUsers.execute();
+    endTime(c, "data");
 
-    return c.json(users);
+    return c.json(usersWithPets);
   });
 
   app.get("/users/:id", async (c) => {
     const userId = parseInt(c.req.param("id"), 10);
-
-    const [foundUser] = await joinUsersAndPets(
-      c,
-      () => getUserById.execute({ userId }),
-    );
+    startTime(c, "data");
+    const foundUser = await getUserById.execute({ userId });
+    endTime(c, "data");
 
     if (!foundUser) {
       return c.text("User not found.", 404);
@@ -36,39 +39,4 @@ export function runWebApi() {
   });
 
   Deno.serve({ port: 8787 }, app.fetch);
-}
-
-async function joinUsersAndPets(
-  c: Context,
-  execute: () => Promise<Array<{ users: User; pets: Pet }>>,
-): Promise<Array<UserWithPets>> {
-  startTime(c, "data");
-
-  const rows = await execute();
-
-  const resultObj = rows.reduce<
-    Record<number, User & { pets: Pet[] }>
-  >(
-    (acc, row) => {
-      const user = row.users;
-      const pet = row.pets;
-
-      if (!acc[user.id]) {
-        acc[user.id] = { ...user, pets: [] };
-      }
-
-      if (pet) {
-        acc[user.id].pets.push(pet);
-      }
-
-      return acc;
-    },
-    {},
-  );
-
-  const result = Object.values(resultObj);
-
-  endTime(c, "data");
-
-  return result;
 }
