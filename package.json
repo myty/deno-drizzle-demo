@@ -4,6 +4,9 @@
     "postgres": "^3.4.3"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.20.12"
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "drizzle-kit": "^0.20.12",
+    "eslint-plugin-drizzle": "^0.2.3"
   }
 }
