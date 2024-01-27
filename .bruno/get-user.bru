@@ -1,0 +1,11 @@
+meta {
+  name: Get User (/users/:id)
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8787/users/1?include=pets
+  body: none
+  auth: none
+}

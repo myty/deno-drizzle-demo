@@ -1,0 +1,23 @@
+meta {
+  name: Create User (/users)
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8787/users
+  body: json
+  auth: none
+}
+
+headers {
+  content-type: application/json
+}
+
+body:json {
+  {
+    "fullName": "Test Owner #6",
+    "emailAddress": "owner+6@pets.com",
+    "phone": "111-111-1111"
+  }
+}

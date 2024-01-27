@@ -20,12 +20,17 @@ export const pets = pgTable("pets", {
 });
 
 export const petsRelations = relations(pets, ({ one }) => ({
-  author: one(users, {
+  owner: one(users, {
     fields: [pets.ownerId],
     references: [users.id],
   }),
 }));
 
 export type User = typeof users.$inferSelect;
+export type UserCreate = Omit<User, "id">;
 export type Pet = typeof pets.$inferSelect;
+export type PetCreate = Omit<Pet, "id">;
 export type UserWithPets = User & { pets: Pet[] };
+export type UserWithPetsCreate = UserCreate & {
+  pets: Omit<PetCreate, "ownerId">[];
+};
