@@ -2,16 +2,14 @@ import { sql } from "drizzle-orm";
 import { db } from "../db/db.ts";
 import { endTime, Hono, startTime, timing } from "../../deps.ts";
 
-const getAllUsers = db.query.users
-  .findMany({
-    with: { pets: true },
-  })
-  .prepare("all_users");
+const getAllUsers = db.query.users.findMany({
+  with: { pets: true },
+}).prepare("getAllUsers");
 
 const getUserById = db.query.users.findFirst({
   with: { pets: true },
   where: ((users, { eq }) => eq(users.id, sql.placeholder("userId"))),
-}).prepare("user");
+}).prepare("getUserById");
 
 export function runWebApi() {
   const app = new Hono();
