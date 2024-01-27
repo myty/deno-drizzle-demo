@@ -6,10 +6,7 @@ COPY --from=deno /deno /usr/local/bin/deno
 
 WORKDIR /app
 
-COPY package.json .
-COPY package-lock.json .
 COPY deps.ts .
-RUN npm ci --omit=dev
 RUN deno cache deps.ts
 
 COPY . .
