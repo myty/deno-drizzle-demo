@@ -1,78 +1,32 @@
-import { sql } from "drizzle-orm";
-import { db } from "../db/db.ts";
 import { endTime, Hono, startTime } from "../../deps.ts";
-import {
-  pets as petsTable,
-  users as usersTable,
-  UserWithPetsCreate,
-} from "../db/schema.ts";
+import { User } from "../db/models/users.ts";
+import type { Create } from "../core/interfaces/repository.ts";
+import { userRepository } from "../db/repositories/users.ts";
 
 export const usersRoute = new Hono();
-
-// -------------------------
-// PREPARED QUERIES
-// -------------------------
-
-const getAllUsers = db.query.users.findMany().prepare("getAllUsers");
-
-const getAllUsersWithPets = db.query.users.findMany({
-  with: {
-    pets: {
-      columns: {
-        id: true,
-        name: true,
-        favoriteFood: true,
-      },
-    },
-  },
-}).prepare("getAllUsersWithPets");
-
-const getUserById = db.query.users.findFirst({
-  where: ((users, { eq }) => eq(users.id, sql.placeholder("userId"))),
-}).prepare("getUserById");
-
-const getUserWithPetsById = db.query.users.findFirst({
-  with: {
-    pets: {
-      columns: {
-        id: true,
-        name: true,
-        favoriteFood: true,
-      },
-    },
-  },
-  where: ((users, { eq }) => eq(users.id, sql.placeholder("userId"))),
-}).prepare("getUserWithPetsById");
 
 // -------------------------
 // INDEX
 // -------------------------
 usersRoute.get("/", async (c) => {
-  const includeProperties = c.req.queries("include") ?? [];
-  const includePets = includeProperties.includes("pets");
-
   startTime(c, "data");
 
-  const usersWithPets = await (includePets ? getAllUsersWithPets : getAllUsers)
-    .execute();
+  const users = await userRepository.findAll();
 
   endTime(c, "data");
 
-  return c.json(usersWithPets);
+  return c.json(users);
 });
 
 // -------------------------
 // GET
 // -------------------------
 usersRoute.get("/:id", async (c) => {
-  const includeProperties = c.req.queries("include") ?? [];
-  const includePets = includeProperties.includes("pets");
   const userId = parseInt(c.req.param("id"), 10);
 
   startTime(c, "data");
 
-  const foundUser = await (includePets ? getUserWithPetsById : getUserById)
-    .execute({ userId });
+  const foundUser = await userRepository.find(userId);
 
   endTime(c, "data");
 
@@ -87,27 +41,13 @@ usersRoute.get("/:id", async (c) => {
 // POST
 // -------------------------
 usersRoute.post("/", async (c) => {
-  const { pets, ...owner } = await c.req.json<UserWithPetsCreate>();
+  const owner = await c.req.json<Create<User>>();
 
   startTime(c, "data");
 
-  const [createdOwner] = await db.insert(usersTable).values(owner).returning();
-
-  const hasPets = Array.isArray(pets) && pets.length > 0;
-  if (hasPets) {
-    await db.insert(petsTable).values(pets.map((p) => ({
-      ...p,
-      ownerId: createdOwner.id,
-    }))).returning();
-  }
-
-  const foundUser = await (hasPets ? getUserWithPetsById : getUserById).execute(
-    {
-      userId: createdOwner.id,
-    },
-  );
+  const createdOwner = await userRepository.create(owner);
 
   endTime(c, "data");
 
-  return c.json(foundUser);
+  return c.json(createdOwner);
 });

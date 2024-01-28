@@ -5,7 +5,6 @@
       "npm:@typescript-eslint/eslint-plugin@^6.19.1": "npm:@typescript-eslint/eslint-plugin@6.19.1_@typescript-eslint+parser@6.19.1__eslint@8.56.0_eslint@8.56.0",
       "npm:@typescript-eslint/parser@^6.19.1": "npm:@typescript-eslint/parser@6.19.1_eslint@8.56.0",
       "npm:drizzle-kit@^0.20.12": "npm:drizzle-kit@0.20.13_esbuild@0.19.12",
-      "npm:drizzle-orm": "npm:drizzle-orm@0.29.3_postgres@3.4.3",
       "npm:drizzle-orm@^0.29.3": "npm:drizzle-orm@0.29.3_postgres@3.4.3",
       "npm:eslint-plugin-drizzle@^0.2.3": "npm:eslint-plugin-drizzle@0.2.3_eslint@8.56.0",
       "npm:postgres@^3.4.3": "npm:postgres@3.4.3"

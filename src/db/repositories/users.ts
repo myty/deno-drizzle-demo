@@ -1,0 +1,27 @@
+import { db } from "../db.ts";
+import { Create, Repostitory } from "../../core/interfaces/repository.ts";
+import { User, users } from "../models/users.ts";
+
+export class UserRepository implements Repostitory<User> {
+  async findAll(): Promise<User[]> {
+    const results = await db.select().from(users);
+
+    return results;
+  }
+
+  async find(id: number): Promise<User | null> {
+    const result = await db.query.users.findFirst({
+      where: (users, { eq }) => eq(users.id, id),
+    });
+
+    return result ?? null;
+  }
+
+  async create(user: Create<User>): Promise<User> {
+    const [result] = await db.insert(users).values(user).returning();
+
+    return result;
+  }
+}
+
+export const userRepository = new UserRepository();

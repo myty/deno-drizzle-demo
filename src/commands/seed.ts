@@ -1,7 +1,9 @@
 import type { Column } from "drizzle-orm";
 import { sql } from "drizzle-orm";
-import { pets, users } from "../db/schema.ts";
+import { schema } from "../db/schema.ts";
 import { client, db } from "../db/db.ts";
+
+const { users, pets } = schema;
 
 function count(col: Column) {
   return sql<number>`count(${col})`;
