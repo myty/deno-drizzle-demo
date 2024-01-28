@@ -15,3 +15,5 @@ export const petsRelations = relations(pets, ({ one }) => ({
     references: [users.id],
   }),
 }));
+
+export type Pet = typeof pets.$inferSelect;
