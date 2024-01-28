@@ -1,11 +1,15 @@
 meta {
   name: List Users (/users)
   type: http
-  seq: 1
+  seq: 3
 }
 
 get {
-  url: http://localhost:8787/users?include=pets
+  url: {{baseUrl}}/users
   body: none
   auth: none
+}
+
+assert {
+  res.status: eq 200
 }

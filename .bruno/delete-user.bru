@@ -1,16 +1,19 @@
 meta {
-  name: Get User (/users/:id)
+  name: Delete User (/users/:id)
   type: http
-  seq: 2
+  seq: 4
 }
 
-get {
+delete {
   url: {{baseUrl}}/users/{{userId}}
   body: none
   auth: none
 }
 
+headers {
+  content-type: application/json
+}
+
 assert {
   res.status: eq 200
-  res.body.fullName: isString
 }

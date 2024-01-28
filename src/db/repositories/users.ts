@@ -1,6 +1,7 @@
 import { db } from "../db.ts";
 import { Create, Repository } from "../../core/interfaces/repository.ts";
 import { User, users } from "../models/users.ts";
+import { eq } from "drizzle-orm";
 
 export class UserRepository implements Repository<User> {
   async findAll(): Promise<User[]> {
@@ -11,7 +12,7 @@ export class UserRepository implements Repository<User> {
 
   async find(id: number): Promise<User | null> {
     const result = await db.query.users.findFirst({
-      where: (users, { eq }) => eq(users.id, id),
+      where: eq(users.id, id),
     });
 
     return result ?? null;
@@ -21,6 +22,10 @@ export class UserRepository implements Repository<User> {
     const [result] = await db.insert(users).values(user).returning();
 
     return result;
+  }
+
+  async delete(id: number): Promise<void> {
+    await db.delete(users).where(eq(users.id, id));
   }
 }
 

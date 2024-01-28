@@ -1,23 +1,36 @@
 meta {
   name: Create User (/users)
   type: http
-  seq: 3
+  seq: 1
 }
 
 post {
-  url: http://localhost:8787/users
-  body: json
-  auth: none
+  url: {{baseUrl}}/users
 }
 
 headers {
   content-type: application/json
 }
 
-body:json {
-  {
-    "fullName": "Test Owner #6",
-    "emailAddress": "owner+6@pets.com",
-    "phone": "111-111-1111"
-  }
+script:pre-request {
+  const { faker } = require('@faker-js/faker');
+  const { v4: uuidv4 } = require('uuid');
+
+  const firstName = faker.person.firstName();
+  const lastName = uuidv4();
+
+  req.setBody({
+    fullName: `${firstName} ${lastName}`,
+    emailAddress: faker.internet.email({ firstName, lastName }),
+    phone: faker.phone.number()
+  });
+}
+
+script:post-response {
+  bru.setVar("userId", res.body.id);
+}
+
+assert {
+  res.status: eq 201
+  res.body.fullName: isString
 }

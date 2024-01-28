@@ -7,4 +7,5 @@ export interface Repository<TEntity extends Entity> {
   findAll(): Promise<TEntity[]>;
   find(id: Id<TEntity>): Promise<TEntity | null>;
   create(value: Create<TEntity>): Promise<TEntity>;
+  delete(id: Id<TEntity>): Promise<void>;
 }
