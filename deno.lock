@@ -7,6 +7,7 @@
       "npm:drizzle-kit@^0.20.12": "npm:drizzle-kit@0.20.13_esbuild@0.19.12",
       "npm:drizzle-orm@^0.29.3": "npm:drizzle-orm@0.29.3_postgres@3.4.3",
       "npm:eslint-plugin-drizzle@^0.2.3": "npm:eslint-plugin-drizzle@0.2.3_eslint@8.56.0",
+      "npm:eslint@^8.56.0": "npm:eslint@8.56.0",
       "npm:postgres@^3.4.3": "npm:postgres@3.4.3"
     },
     "npm": {
@@ -1418,6 +1419,7 @@
         "npm:drizzle-kit@^0.20.12",
         "npm:drizzle-orm@^0.29.3",
         "npm:eslint-plugin-drizzle@^0.2.3",
+        "npm:eslint@^8.56.0",
         "npm:postgres@^3.4.3"
       ]
     }

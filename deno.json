@@ -5,8 +5,21 @@
     "migrate": "deno run -A ./src/index.ts -- migrate",
     "seed": "deno run -A ./src/index.ts -- seed",
     "generate": "npx drizzle-kit generate:pg",
-    "check": "npx drizzle-kit check:pg",
+    "check": "deno lint && npx eslint --ext .ts ./src && npx drizzle-kit check:pg",
     "initialize": "npm install && deno cache src/index.ts && deno task migrate && deno task seed",
     "update": "deno run --allow-read=./ --allow-net --allow-write=./ https://deno.land/x/deno_outdated@0.2.5/cli.ts && deno cache --reload src/index.ts"
+  },
+  "fmt": {
+    "indentWidth": 2,
+    "semiColons": true,
+    "useTabs": false,
+    "exclude": [
+      "node_modules",
+      "drizzle",
+      "tsconfig.json",
+      "README.md",
+      ".devcontainer",
+      ".vscode"
+    ]
   }
 }

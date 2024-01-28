@@ -7,6 +7,7 @@
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
     "drizzle-kit": "^0.20.12",
+    "eslint": "^8.56.0",
     "eslint-plugin-drizzle": "^0.2.3"
   }
 }

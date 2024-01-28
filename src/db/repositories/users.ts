@@ -1,8 +1,8 @@
 import { db } from "../db.ts";
-import { Create, Repostitory } from "../../core/interfaces/repository.ts";
+import { Create, Repository } from "../../core/interfaces/repository.ts";
 import { User, users } from "../models/users.ts";
 
-export class UserRepository implements Repostitory<User> {
+export class UserRepository implements Repository<User> {
   async findAll(): Promise<User[]> {
     const results = await db.select().from(users);
 

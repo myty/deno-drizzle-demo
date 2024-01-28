@@ -1,13 +1,14 @@
 import { endTime, Hono, startTime } from "../../deps.ts";
-import { User } from "../db/models/users.ts";
+import { User, users } from "../db/models/users.ts";
 import type { Create } from "../core/interfaces/repository.ts";
-import { userRepository } from "../db/repositories/users.ts";
+import { Repository } from "../db/repositories/index.ts";
+const userRepository = Repository(users);
 
 export const usersRoute = new Hono();
 
-// -------------------------
-// INDEX
-// -------------------------
+// --------------------------------------------------
+// LIST
+// --------------------------------------------------
 usersRoute.get("/", async (c) => {
   startTime(c, "data");
 
@@ -18,9 +19,9 @@ usersRoute.get("/", async (c) => {
   return c.json(users);
 });
 
-// -------------------------
+// --------------------------------------------------
 // GET
-// -------------------------
+// --------------------------------------------------
 usersRoute.get("/:id", async (c) => {
   const userId = parseInt(c.req.param("id"), 10);
 
@@ -37,9 +38,9 @@ usersRoute.get("/:id", async (c) => {
   return c.json(foundUser);
 });
 
-// -------------------------
-// POST
-// -------------------------
+// --------------------------------------------------
+// CREATE
+// --------------------------------------------------
 usersRoute.post("/", async (c) => {
   const owner = await c.req.json<Create<User>>();
 
