@@ -7,7 +7,8 @@
     "generate": "npx drizzle-kit generate:pg",
     "check": "deno lint && npx eslint --ext .ts ./src && npx drizzle-kit check:pg",
     "initialize": "npm install && deno cache src/index.ts && deno task migrate && deno task seed",
-    "update": "deno run --allow-read=./ --allow-net --allow-write=./ https://deno.land/x/deno_outdated@0.2.5/cli.ts && deno cache --reload src/index.ts"
+    "update": "deno run --allow-read=./ --allow-net --allow-write=./ https://deno.land/x/deno_outdated@0.2.5/cli.ts && deno cache --reload src/index.ts",
+    "test": "cd ./.bruno && npx bru run --env Local"
   },
   "fmt": {
     "indentWidth": 2,
