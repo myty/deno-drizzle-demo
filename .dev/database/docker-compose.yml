@@ -1,0 +1,26 @@
+# https://github.com/usil/mssql-docker-enhanced/tree/main
+
+name: deno-drizzle-demo
+services:
+  db:
+    image: postgres:16
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - APP_DB_USER=docker
+      - APP_DB_PASS=docker
+      - APP_DB_NAME=drizzle_demo
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d/
+    ports:
+      - 5432:5432
+
+volumes:
+  postgres_data:

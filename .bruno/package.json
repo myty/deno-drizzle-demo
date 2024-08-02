@@ -2,7 +2,9 @@
   "name": "deno-drizzle-demo-bruno-collection",
   "version": "0.0.0",
   "devDependencies": {
-    "@faker-js/faker": "^8.4.0",
-    "@usebruno/cli": "^1.3.0"
+    "@faker-js/faker": "^8.4.1"
+  },
+  "scripts": {
+    "test": "deno run -A npm:@usebruno/cli run --env Local"
   }
 }

@@ -11,5 +11,8 @@
             ]
         }
     },
-    "postStartCommand": "deno task initialize"
+    "postStartCommand": "deno task initialize",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    }
 }

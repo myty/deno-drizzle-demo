@@ -1,4 +1,5 @@
-import { endTime, Hono, startTime } from "../../deps.ts";
+import { Hono } from "@hono/hono";
+import { endTime, startTime } from "@hono/hono/timing";
 import { User, users } from "../db/models/users.ts";
 import type { Create } from "../core/interfaces/repository.ts";
 import { Repository } from "../db/repositories/index.ts";

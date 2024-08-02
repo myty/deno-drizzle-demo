@@ -1,14 +1,21 @@
 {
   "tasks": {
-    "dev": "deno run --watch -A ./src/index.ts -- api",
-    "serve": "deno run -A ./src/index.ts -- api",
-    "migrate": "deno run -A ./src/index.ts -- migrate",
-    "seed": "deno run -A ./src/index.ts -- seed",
-    "generate": "npx drizzle-kit generate:pg",
+    "dev": "deno task db:start && deno run --env --watch -A ./src/index.ts api",
+    "serve": "deno task db:start && deno run -A --env ./src/index.ts api",
+    "migrate": "deno task db:start && deno run -A --env ./src/index.ts migrate",
+    "seed": "deno task db:start && deno run -A --env ./src/index.ts seed",
+    "generate": "deno task db:start && deno drizzle-kit generate:pg",
     "check": "deno lint && npx eslint --ext .ts ./src && npx drizzle-kit check:pg",
-    "initialize": "npm install && deno cache src/index.ts && deno task migrate && deno task seed",
+    "initialize": "deno cache src/index.ts && deno task migrate && deno task seed",
     "update": "deno run --allow-read=./ --allow-net --allow-write=./ https://deno.land/x/deno_outdated@0.2.5/cli.ts && deno cache --reload src/index.ts",
-    "test": "cd ./.bruno && npx bru run --env Local"
+    "test:e2e": "cd ./.bruno && deno task test",
+    "db": "docker compose -f ./.dev/database/docker-compose.yml",
+    "db:build": "deno task db build",
+    "db:start": "deno task db up -d",
+    "db:stop": "deno task db down"
+  },
+  "imports": {
+    "denomander": "https://deno.land/x/denomander@0.9.3/mod.ts"
   },
   "fmt": {
     "indentWidth": 2,

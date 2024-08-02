@@ -1,4 +1,4 @@
-import { Denomander } from "../deps.ts";
+import Denomander from "denomander";
 import { seedDatabase } from "./commands/seed.ts";
 import { migrateDatabase } from "./commands/migrate.ts";
 import { runWebApi } from "./commands/api.ts";
