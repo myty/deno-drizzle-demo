@@ -1,10 +1,8 @@
 {
-  "id": "9c977a83-4675-4fbf-bedc-98710f146542",
-  "prevId": "7b8969ab-2368-41e2-abb6-a06f41a432e8",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "pets": {
+    "public.pets": {
       "name": "pets",
       "schema": "",
       "columns": {
@@ -26,7 +24,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user_to_pets": {
+    "public.user_to_pets": {
       "name": "user_to_pets",
       "schema": "",
       "columns": {
@@ -48,42 +46,42 @@
         "user_to_pets_owner_id_users_id_fk": {
           "name": "user_to_pets_owner_id_users_id_fk",
           "tableFrom": "user_to_pets",
-          "tableTo": "users",
           "columnsFrom": [
             "owner_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         },
         "user_to_pets_pet_id_pets_id_fk": {
           "name": "user_to_pets_pet_id_pets_id_fk",
           "tableFrom": "user_to_pets",
-          "tableTo": "pets",
           "columnsFrom": [
             "pet_id"
           ],
+          "tableTo": "pets",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "user_to_pets_pet_id_unique": {
           "name": "user_to_pets_pet_id_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "pet_id"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "users": {
+    "public.users": {
       "name": "users",
       "schema": "",
       "columns": {
@@ -118,10 +116,10 @@
       "uniqueConstraints": {
         "users_email_address_unique": {
           "name": "users_email_address_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email_address"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     }
@@ -129,8 +127,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "9c977a83-4675-4fbf-bedc-98710f146542",
+  "prevId": "7b8969ab-2368-41e2-abb6-a06f41a432e8"
 }

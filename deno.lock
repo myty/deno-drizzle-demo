@@ -5,8 +5,10 @@
       "npm:@jsr/hono__hono@^4.5.3": "npm:@jsr/hono__hono@4.5.3",
       "npm:@typescript-eslint/eslint-plugin@^8.0.0": "npm:@typescript-eslint/eslint-plugin@8.0.0_@typescript-eslint+parser@8.0.0__eslint@9.8.0_eslint@9.8.0",
       "npm:@typescript-eslint/parser@^8.0.0": "npm:@typescript-eslint/parser@8.0.0_eslint@9.8.0",
+      "npm:drizzle-kit": "npm:drizzle-kit@0.23.1_esbuild@0.19.12",
       "npm:drizzle-kit@^0.23.1": "npm:drizzle-kit@0.23.1_esbuild@0.19.12",
       "npm:drizzle-orm@^0.32.1": "npm:drizzle-orm@0.32.1_postgres@3.4.4",
+      "npm:eslint": "npm:eslint@9.8.0",
       "npm:eslint-plugin-drizzle@^0.2.3": "npm:eslint-plugin-drizzle@0.2.3_eslint@9.8.0",
       "npm:eslint@^9.8.0": "npm:eslint@9.8.0",
       "npm:postgres@^3.4.4": "npm:postgres@3.4.4"

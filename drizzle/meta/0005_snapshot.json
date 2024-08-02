@@ -1,10 +1,8 @@
 {
-  "id": "03d4fb77-0755-4051-a102-e185e5d26ccc",
-  "prevId": "9c977a83-4675-4fbf-bedc-98710f146542",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "pets": {
+    "public.pets": {
       "name": "pets",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "pets_owner_id_users_id_fk": {
           "name": "pets_owner_id_users_id_fk",
           "tableFrom": "pets",
-          "tableTo": "users",
           "columnsFrom": [
             "owner_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "users": {
+    "public.users": {
       "name": "users",
       "schema": "",
       "columns": {
@@ -81,10 +79,10 @@
       "uniqueConstraints": {
         "users_email_address_unique": {
           "name": "users_email_address_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email_address"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     }
@@ -92,8 +90,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "03d4fb77-0755-4051-a102-e185e5d26ccc",
+  "prevId": "9c977a83-4675-4fbf-bedc-98710f146542"
 }
