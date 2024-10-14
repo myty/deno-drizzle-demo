@@ -4,19 +4,30 @@
     "serve": "deno task db:start && deno run -A --env ./src/index.ts api",
     "migrate": "deno task db:start && deno run -A --env ./src/index.ts migrate",
     "seed": "deno task db:start && deno run -A --env ./src/index.ts seed",
-    "generate": "deno task db:start && deno task dk generate",
-    "check": "deno lint && deno task dk check",
+    "generate": "deno task db:start && deno task drizzle-kit generate",
+    "studio": "deno task db:start && deno task drizzle-kit studio",
+    "check": "deno lint && deno task drizzle-kit check",
     "initialize": "deno task db:start && deno cache src/index.ts --allow-scripts=npm:esbuild --reload && deno task migrate && deno task seed",
     "update": "deno run --allow-read=./ --allow-net --allow-write=./ https://deno.land/x/deno_outdated@0.2.5/cli.ts && deno cache --reload src/index.ts",
-    "test:e2e": "cd ./.bruno && deno task test",
+    "test:e2e": "deno task dev & deno task test",
+    "test": "cd ./.bruno && deno task test",
     "db": "docker compose -f ./.dev/database/docker-compose.yml",
     "db:build": "deno task db build",
     "db:start": "deno task db up -d",
     "db:stop": "deno task db down",
-    "dk": "deno run -A npm:drizzle-kit"
+    "drizzle-kit": "deno run --env -A --node-modules-dir npm:drizzle-kit"
   },
   "imports": {
-    "denomander": "https://deno.land/x/denomander@0.9.3/mod.ts"
+    "@faker-js/faker": "npm:@faker-js/faker@^8.4.1",
+    "@typescript-eslint/eslint-plugin": "npm:@typescript-eslint/eslint-plugin@^8.8.1",
+    "@typescript-eslint/parser": "npm:@typescript-eslint/parser@^8.8.1",
+    "denomander": "https://deno.land/x/denomander@0.9.3/mod.ts",
+    "drizzle-kit": "npm:drizzle-kit@^0.25.0",
+    "drizzle-orm": "npm:drizzle-orm@^0.34.1",
+    "eslint-plugin-drizzle": "npm:eslint-plugin-drizzle@^0.2.3",
+    "eslint": "npm:eslint@^9.12.0",
+    "hono": "jsr:@hono/hono@^4",
+    "postgres": "npm:postgres@^3.4.4"
   },
   "fmt": {
     "indentWidth": 2,
@@ -30,5 +41,10 @@
       ".devcontainer",
       ".vscode"
     ]
+  },
+  "compilerOptions": {
+    "checkJs": true,
+    "jsx": "react",
+    "strict": true
   }
 }
