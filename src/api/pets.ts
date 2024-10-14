@@ -1,5 +1,5 @@
-import { Hono } from "@hono/hono";
-import { endTime, startTime } from "@hono/hono/timing";
+import { Hono } from "hono";
+import { endTime, startTime } from "hono/timing";
 import { Pet, pets } from "../db/models/pets.ts";
 import type { Create } from "../core/interfaces/repository.ts";
 import { Repository } from "../db/repositories/index.ts";

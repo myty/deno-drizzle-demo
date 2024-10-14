@@ -1,5 +1,5 @@
-import { Hono } from "@hono/hono";
-import { timing } from "@hono/hono/timing";
+import { Hono } from "hono";
+import { timing } from "hono/timing";
 import { usersRoute } from "./users.ts";
 import { petsRoute } from "./pets.ts";
 
