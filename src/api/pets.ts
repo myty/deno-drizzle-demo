@@ -63,7 +63,6 @@ petsRoute.delete("/:id", async (c) => {
 
   startTime(c, "data");
 
-  // eslint-disable-next-line drizzle/enforce-delete-with-where
   await petRepository.delete(id);
 
   endTime(c, "data");

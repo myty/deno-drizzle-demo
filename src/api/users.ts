@@ -57,13 +57,11 @@ usersRoute.post("/", async (c) => {
 // --------------------------------------------------
 // DELETE
 // --------------------------------------------------
-// eslint-disable-next-line drizzle/enforce-delete-with-where
 usersRoute.delete("/:id", async (c) => {
   const userId = parseInt(c.req.param("id"), 10);
 
   startTime(c, "data");
 
-  // eslint-disable-next-line drizzle/enforce-delete-with-where
   await userRepository.delete(userId);
 
   endTime(c, "data");
