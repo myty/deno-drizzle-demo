@@ -18,15 +18,15 @@
     "drizzle-kit": "deno run --env -A --node-modules-dir npm:drizzle-kit"
   },
   "imports": {
-    "@faker-js/faker": "npm:@faker-js/faker@^9.6.0",
-    "@typescript-eslint/eslint-plugin": "npm:@typescript-eslint/eslint-plugin@^8.29.1",
-    "@typescript-eslint/parser": "npm:@typescript-eslint/parser@^8.29.1",
+    "@faker-js/faker": "npm:@faker-js/faker@^9.7.0",
+    "@typescript-eslint/eslint-plugin": "npm:@typescript-eslint/eslint-plugin@^8.31.1",
+    "@typescript-eslint/parser": "npm:@typescript-eslint/parser@^8.31.1",
     "@drizzle-team/brocli": "npm:@drizzle-team/brocli@^0.11.0",
-    "drizzle-kit": "npm:drizzle-kit@^0.30.6",
-    "drizzle-orm": "npm:drizzle-orm@^0.41.0",
+    "drizzle-kit": "npm:drizzle-kit@^0.31.0",
+    "drizzle-orm": "npm:drizzle-orm@^0.43.1",
     "eslint-plugin-drizzle": "npm:eslint-plugin-drizzle@^0.2.3",
-    "eslint": "npm:eslint@^9.24.0",
-    "hono": "jsr:@hono/hono@^4.7.6",
+    "eslint": "npm:eslint@^9.25.1",
+    "hono": "jsr:@hono/hono@^4.7.8",
     "postgres": "npm:postgres@^3.4.5"
   },
   "fmt": {
