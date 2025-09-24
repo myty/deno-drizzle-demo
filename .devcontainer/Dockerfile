@@ -1,4 +1,4 @@
-ARG DENO_VERSION=2.3.1
+ARG DENO_VERSION=2.5.1
 
 FROM denoland/deno:bin-$DENO_VERSION AS deno
 FROM mcr.microsoft.com/devcontainers/typescript-node:20
